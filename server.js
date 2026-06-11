@@ -32,6 +32,23 @@ db.connect((err) => {
   }
 });
 
+app.get('/db-test', (req, res) => {
+  db.query('SELECT 1 AS test', (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        error: err.message
+      });
+    }
+
+    res.json({
+      success: true,
+      database: 'connected',
+      results
+    });
+  });
+});
+
 // STORAGE
 const storage = multer.diskStorage({
 
