@@ -1,5 +1,5 @@
  {
-  "name": "environment-api",
+  "name": "environmentapp",
   "version": "1.0.0",
   "description": "Environment Reporting API",
   "main": "server.js",
