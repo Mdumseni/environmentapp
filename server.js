@@ -18,13 +18,12 @@ if (!fs.existsSync('uploads')) {
 
 // MYSQL
 const db = mysql.createConnection({
-
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'municipality_db',
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT,
 });
-
 db.connect((err) => {
 
   if (err) {
@@ -187,6 +186,8 @@ app.delete('/reports/:id', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
